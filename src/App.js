@@ -2,6 +2,27 @@ import React from "react";
 import "./App.css";
 import Stat from "./Components/Stat"; // Importera komponenten Stat från Components-foldern
 
+/*
+
+  Ternary ✔
+  Arrow function ✔
+  Map ✔
+  Callbacks ✔
+  State (useState hook)
+  Bubble up state
+*/
+
+/*
+Ternary:
+  Lägg till style först;
+  <li style={{ color: "red" }}>
+  <li style={{ color: stat.statsValue >= 10 ? "red" : "black" }}>
+*/
+
+/*
+const () => { Do stuff here };
+*/
+
 function App() {
   /*
     Skapar ett objekt som håller i vår karaktär
@@ -24,6 +45,10 @@ function App() {
     ]
   };
 
+  const handleClick = () => {
+    alert("heeeej");
+  };
+
   /*
     Return är det som skrivs ut på sidan
     Det som returneras är JSX, och vi behöver returnera ett huvudelement
@@ -44,12 +69,14 @@ function App() {
       <ul>
         {/* (så här kommenterar vi i JSX) */}
         {/*
-          Använder komponenten Stat och skickar med attributet (prop) stat
+          Använder map-metoden för att skriva ut en Stat komponent för varje Stat i Stats-arrayen
+          Använder en pil-funktion som callback
         */}
-        <Stat stat={character.stats[0]}></Stat>
-        <Stat stat={character.stats[1]}></Stat>
-        <Stat stat={character.stats[2]}></Stat>
+        {character.stats.map((stat, key) => {
+          return <Stat key={key} stat={stat} />;
+        })}
       </ul>
+      <button onClick={handleClick}>Click me!</button>
     </div>
   );
 }
